@@ -1,0 +1,1 @@
+bash -c "/usr/bin/java -jar /opt/gls/clarity/extensions/LabServices.jar -t ParseQPCROutput -a {processURI:v2:http} -u {username} -p {password} -f {compoundOutputFileLuid2} -l test > {compoundOutputFileLuid3}ParseLog"

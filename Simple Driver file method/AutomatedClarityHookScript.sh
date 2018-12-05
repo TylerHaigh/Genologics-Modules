@@ -1,0 +1,1 @@
+bash -c "/usr/bin/java -jar /opt/gls/clarity/extensions/ngs-common/v4/EPP/DriverFileGenerator.jar -i {processURI:v2:http} -u {username} -p {password} -t /opt/gls/clarity/extensions/ngs-common/v4/EPP/conf/readonly/DriverTemplate.csv -o {compoundOutputFileLuid3}Driver.csv -l {processLuid}Log

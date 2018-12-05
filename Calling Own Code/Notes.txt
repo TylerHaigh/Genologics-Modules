@@ -1,0 +1,13 @@
+**I have tried to copy in a fair bit of relevant shared code from other files so the function calls make sense which has made it a bit messy but there will still be lots of calls to black boxes. Obviously this code will not run because of that but I hope this gives you an idea. I am happy to have a little trip to walk you through some of this as that made it much easier for me to spend the time grasping the API.
+
+.SH files, this uses a bash cmd to call to your own jar code (can be anything callable from a bash command line)
+
+LabServices.jar = my code. -t the tool within my jar
+The {CODE} are built in parameters that get passed from the automation caller (AI) in Clarity
+
+.SH script added to hook where required in Clarity automation area
+Note: All files must be attached to some output fileResult that needs to be setup in the appropriate step
+
+ParseHamiltonChemagicFile.groovy: Pass the hamilton output fileId, parse and process using  some tools from the SampleStateManagement.groovy library (my code also)
+
+Spring-IOC: I have included this to give you an idea of the model of our code base (not sure what this will bring to the table

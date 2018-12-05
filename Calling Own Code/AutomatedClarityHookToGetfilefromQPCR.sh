@@ -1,0 +1,1 @@
+bash -c "cp -f /opt/gls/shared-files/LightCycler/out/*.csv {compoundOutputFileLuid2}.csv; mv -f /opt/gls/shared-files/LightCycler/out/*.csv /opt/gls/shared-files/LightCycler/archive/{processLuid}qpcr-out.csv"

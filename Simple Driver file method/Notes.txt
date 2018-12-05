@@ -1,0 +1,7 @@
+This uses the Clarity provided DriverFileGenerator useful for basic hardware input files. This is sometimes useful for basic hardware input files where no processing or calculations are required and basic sample and UDF parameters are used ONLY.
+
+Template designed in CSV file
+.SH script added to hook where required in Clarity automation area
+NOTE: -l = log file - o = output file
+All files must be attached to some output fileResult that needs to be setup in the appropriate step within Clarity
+

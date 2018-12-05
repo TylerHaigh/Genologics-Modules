@@ -1,0 +1,12 @@
+INCLUDE.OUTPUT.RESULTFILES
+<DATA>
+${OUTPUT.UDF.Location Number},${OUTPUT.UDF.Lab Number},${SAMPLE.NAME},${SAMPLE.UDF.Patient},${SAMPLE.UDF.URN},${SAMPLE.UDF.Dob},${SAMPLE.UDF.TestSet}
+</DATA>
+<TOKEN_FORMAT>
+${SAMPLE.UDF.Patient}
+if(token.contains(',')){
+    return token.replace(',', ' ')
+} else {
+    return token
+}
+</TOKEN_FORMAT>

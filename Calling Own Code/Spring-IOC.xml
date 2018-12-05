@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       spring-beans-4.1.xsd">
+    <bean id="parseHamiltonChemagicFile" class="org.petermac.clarity.hamiltonChemagic.ParseHamiltonChemagicFile">
+        <constructor-arg ref="clarityCredentials"/>
+        <constructor-arg ref="toolBox"/>
+        <constructor-arg ref="sampleStateManagement"/>
+        <constructor-arg ref="fileManagement"/>
+    </bean>
+    <bean id="calculateDnaAmount" class="org.petermac.clarity.tools.Calculation.CalculateDnaAmount">
+        <constructor-arg ref="clarityCredentials"/>
+        <constructor-arg ref="toolBox"/>
+        <constructor-arg ref="glsRestApiUtils"/>
+        <constructor-arg ref="apiModel"/>
+        <constructor-arg ref="processes"/>
+    </bean>
+    <bean id="parseHamiltonChemagicNormalizationFile" class="org.petermac.clarity.hamiltonChemagicNormalization.ParseHamiltonChemagicNormalizationFile">
+        <constructor-arg ref="clarityCredentials"/>
+        <constructor-arg ref="toolBox"/>
+        <constructor-arg ref="apiModel"/>
+        <constructor-arg ref="fileManagement"/>
+        <constructor-arg ref="sampleStateManagement"/>
+    </bean>
+    <bean id="parseTrineanDropSenseConcentration" class="org.petermac.clarity.trineanDropSense.ParseTrineanDropSenseConcentration">
+        <constructor-arg ref="clarityCredentials"/>
+        <constructor-arg ref="toolBox"/>
+        <constructor-arg ref="step"/>
+        <constructor-arg ref="fileManagement"/>
+        <constructor-arg ref="glsRestApiUtils"/>
+        <constructor-arg ref="apiModel"/>
+        <constructor-arg ref="claritySample"/>
+        <constructor-arg ref="qcManager"/>
+    </bean>
+    <bean id="sampleStateManagement" class="org.petermac.clarity.tools.SampleStateManagement">
+        <constructor-arg ref="clarityCredentials" />
+        <constructor-arg ref="toolBox" />
+        <constructor-arg ref="apiModel" />
+        <constructor-arg ref="placementManager" />
+        <constructor-arg ref="glsRestApiUtils"/>
+        <constructor-arg ref="claritySample"/>
+        <constructor-arg ref="step"/>
+        <constructor-arg ref="clarityConfiguration"/>
+    </bean>
+    <bean id="placementManager" class="org.petermac.clarity.tools.PlacementManager">
+        <constructor-arg ref="clarityCredentials" />
+        <constructor-arg ref="toolBox" />
+        <constructor-arg ref="step" />
+        <constructor-arg ref="glsRestApiUtils"/>
+        <constructor-arg ref="apiModel"/>
+        <constructor-arg ref="wellPlate96"/>
+        <constructor-arg ref="claritySample"/>
+    </bean>
+    <bean id="generateNormWorklist" class="org.petermac.clarity.hamiltonChemagicNormalization.GenerateNormWorklist">
+        <constructor-arg ref="clarityCredentials" />
+        <constructor-arg ref="apiModel"/>
+        <constructor-arg ref="processes"/>
+        <constructor-arg ref="toolBox"/>
+        <constructor-arg ref="glsRestApiUtils"/>
+        <constructor-arg ref="fileManagement"/>
+        <constructor-arg ref="claritySample"/>
+        <constructor-arg ref="normalisationManager"/>
+        <constructor-arg ref="plateWellSort"/>
+    </bean>
+    <bean id="sample" class="org.petermac.clarity.clarityApi.ClaritySample">
+        <constructor-arg ref="clarityCredentials" />
+        <constructor-arg ref="glsRestApiUtils"/>
+        <constructor-arg ref="apiModel"/>
+        <constructor-arg ref="toolBox"/>
+    </bean>
+    <bean id="step" class="org.petermac.clarity.clarityApi.ClarityStep">
+        <constructor-arg ref="clarityCredentials" />
+        <constructor-arg ref="toolBox" />
+        <constructor-arg ref="glsRestApiUtils"/>
+        <constructor-arg ref="apiModel"/>
+    </bean>
+    <bean id="parseNanoDropConcentration" class="org.petermac.clarity.nanoDrop.ParseNanoDropConcentration">
+        <constructor-arg ref="clarityCredentials" />
+        <constructor-arg ref="toolBox" />
+        <constructor-arg ref="fileManagement"/>
+        <constructor-arg ref="glsRestApiUtils"/>
+        <constructor-arg ref="apiModel"/>
+        <constructor-arg ref="normalisation"/>
+        <constructor-arg ref="processes"/>
+    </bean>
+    <bean id="parseQPCRFile" class="org.petermac.clarity.RTPCR.ParseQPCRFile">
+        <constructor-arg ref="glsRestApiUtils" />
+        <constructor-arg ref="dnaQuality" />
+        <constructor-arg ref="claritySample"/>
+        <constructor-arg ref="fileManagement"/>
+        <constructor-arg ref="processes"/>
+        <constructor-arg ref="apiModel"/>
+        <constructor-arg ref="toolBox"/>
+        <constructor-arg ref="qcManager"/>
+    </bean>
+    <bean id="parseQPCRFileQPCR" class="org.petermac.clarity.RTPCR.ParseQPCRFileQPCR">
+        <constructor-arg ref="glsRestApiUtils" />
+        <constructor-arg ref="dnaQuality" />
+        <constructor-arg ref="claritySample"/>
+        <constructor-arg ref="fileManagement"/>
+        <constructor-arg ref="processes"/>
+        <constructor-arg ref="apiModel"/>
+        <constructor-arg ref="toolBox"/>
+        <constructor-arg ref="qcManager"/>
+    </bean>
+    <bean id="generateNanoDropWorklist" class="org.petermac.clarity.nanoDrop.GenerateNanoDropWorklist">
+        <constructor-arg ref="toolBox" />
+        <constructor-arg ref="processes" />
+        <constructor-arg ref="sample"/>
+        <constructor-arg ref="fileManagement"/>
+        <constructor-arg ref="generateBarcode"/>
+    </bean>
+    <bean id="fileManagement" class="org.petermac.clarity.tools.FileManagement">
+        <constructor-arg ref="clarityCredentials" />
+        <constructor-arg ref="toolBox" />
+        <constructor-arg ref="step" />
+        <constructor-arg ref="processes" />
+        <constructor-arg ref="glsRestApiUtils"/>
+        <constructor-arg ref="apiModel"/>
+    </bean>
+    <bean id="processes" class="org.petermac.clarity.clarityApi.ClarityProcess">
+        <constructor-arg ref="clarityCredentials" />
+        <constructor-arg ref="glsRestApiUtils"/>
+        <constructor-arg ref="apiModel"/>
+        <constructor-arg ref="toolBox"/>
+    </bean>
+    <bean id="apiModel" class="org.petermac.clarity.clarityApi.ApiModel">
+        <constructor-arg ref="clarityCredentials" />
+        <constructor-arg ref="glsRestApiUtils"/>
+    </bean>
+    <bean id="bioinformaticsPipeline" class="org.petermac.bioinformatics.bioinformaticsPipeline">
+        <constructor-arg ref="clarityCredentials" />
+        <constructor-arg ref="glsRestApiUtils"/>
+        <constructor-arg ref="apiModel"/>
+        <constructor-arg ref="processes"/>
+        <constructor-arg ref="toolBox"/>
+        <constructor-arg ref="fileManagement"/>
+        <constructor-arg ref="clarityConfiguration"/>
+    </bean>
+
+    <bean id="changeWorkflow" class="org.petermac.clarity.tools.ChangeWorkflow">
+        <constructor-arg ref="glsRestApiUtils"/>
+        <constructor-arg ref="clarityWorkflow"/>
+        <constructor-arg ref="apiModel"/>
+        <constructor-arg ref="toolBox"/>
+        <constructor-arg ref="processes"/>
+        <constructor-arg ref="claritySample"/>
+    </bean>
+    <bean id="calculateConcentrationInNmol" class="org.petermac.clarity.tools.CalculateConcentrationInNmol">
+        <constructor-arg ref="glsRestApiUtils"/>
+        <constructor-arg ref="clarityWorkflow"/>
+        <constructor-arg ref="apiModel"/>
+        <constructor-arg ref="toolBox"/>
+        <constructor-arg ref="processes"/>
+        <constructor-arg ref="calculateNMOLEngine"/>
+    </bean>
+    <bean id="toolBox" class="org.petermac.clarity.tools.ToolBox">
+        <constructor-arg ref="clarityCredentials" />
+        <constructor-arg ref="glsRestApiUtils"/>
+        <constructor-arg ref="apiModel"/>
+    </bean>
+    <bean id="generatePlateLoadWorklist" class="org.petermac.clarity.hamiltonMicroLabPlateLoad.GeneratePlateLoadWorklist">
+        <constructor-arg ref="clarityCredentials" />
+        <constructor-arg ref="apiModel"/>
+        <constructor-arg ref="processes"/>
+        <constructor-arg ref="toolBox"/>
+        <constructor-arg ref="glsRestApiUtils"/>
+        <constructor-arg ref="fileManagement"/>
+        <constructor-arg ref="claritySample"/>
+        <constructor-arg ref="plateWellSort"/>
+    </bean>
+    <bean id="getSampleLocationDetails" class="org.petermac.clarity.sampleStorage.GetSampleLocationDetails">
+        <constructor-arg ref="clarityCredentials" />
+        <constructor-arg ref="apiModel"/>
+        <constructor-arg ref="processes"/>
+        <constructor-arg ref="toolBox"/>
+        <constructor-arg ref="glsRestApiUtils"/>
+        <constructor-arg ref="fileManagement"/>
+        <constructor-arg ref="claritySample"/>
+        <constructor-arg ref="plateWellSort"/>
+    </bean>
+    <bean id="generatePlateLoadTruSightWorklist" class="org.petermac.clarity.hamiltonMicroLabPlateLoad.GeneratePlateLoadTruSightWorklist">
+        <constructor-arg ref="clarityCredentials" />
+        <constructor-arg ref="apiModel"/>
+        <constructor-arg ref="processes"/>
+        <constructor-arg ref="toolBox"/>
+        <constructor-arg ref="glsRestApiUtils"/>
+        <constructor-arg ref="fileManagement"/>
+        <constructor-arg ref="claritySample"/>
+        <constructor-arg ref="plateWellSort"/>
+    </bean>
+    <bean id="generateQPCRWorklist" class="org.petermac.clarity.RTPCR.GenerateQPCRWorklist">
+        <constructor-arg ref="clarityCredentials" />
+        <constructor-arg ref="apiModel"/>
+        <constructor-arg ref="processes"/>
+        <constructor-arg ref="toolBox"/>
+        <constructor-arg ref="glsRestApiUtils"/>
+        <constructor-arg ref="fileManagement"/>
+        <constructor-arg ref="claritySample"/>
+        <constructor-arg ref="plateWellSort"/>
+    </bean>
+    <bean id="generateCDNAToRNAWorklist" class="org.petermac.clarity.RTPCR.GenerateCDNAToRNAWorklist">
+        <constructor-arg ref="clarityCredentials" />
+        <constructor-arg ref="apiModel"/>
+        <constructor-arg ref="processes"/>
+        <constructor-arg ref="toolBox"/>
+        <constructor-arg ref="glsRestApiUtils"/>
+        <constructor-arg ref="fileManagement"/>
+        <constructor-arg ref="claritySample"/>
+        <constructor-arg ref="plateWellSort"/>
+    </bean>
+    <bean id="loadClarity" class="org.petermac.clarity.loader.LoadClarity">
+        <constructor-arg ref="clarityCredentials" />
+        <constructor-arg ref="glsRestApiUtils"/>
+        <constructor-arg ref="claritySample"/>
+        <constructor-arg ref="apiModel"/>
+    </bean>
+    <bean id="claritySample" class="org.petermac.clarity.clarityApi.ClaritySample">
+        <constructor-arg ref="clarityCredentials" />
+        <constructor-arg ref="glsRestApiUtils"/>
+        <constructor-arg ref="apiModel"/>
+        <constructor-arg ref="toolBox"/>
+    </bean>
+    <bean id="updateMiSeqFile" class="org.petermac.clarity.illuminaMiSeq.UpdateMiSeqFile" >
+        <constructor-arg ref="fileManagement"/>
+        <constructor-arg ref="glsRestApiUtils"/>
+        <constructor-arg ref="apiModel"/>
+        <constructor-arg ref="toolBox"/>
+    </bean>
+    <bean id="actionManager" class="org.petermac.clarity.tools.ActionManager" >
+        <constructor-arg ref="sampleStateManagement"/>
+        <constructor-arg ref="toolBox"/>
+        <constructor-arg ref="clarityConfiguration"/>
+    </bean>
+    <bean id="clarityConfiguration" class="org.petermac.clarity.ClarityConfiguration">
+        <constructor-arg ref="clarityCredentials"/>
+    </bean>
+    <bean id="normalisationManager" class="org.petermac.clarity.tools.Calculation.NormalisationManager">
+        <constructor-arg ref="glsRestApiUtils"/>
+        <constructor-arg ref="claritySample"/>
+    </bean>
+    <bean id="autoPlaceReagents" class="org.petermac.clarity.tools.AutoPlaceReagents">
+        <constructor-arg ref="clarityCredentials"/>
+        <constructor-arg ref="glsRestApiUtils"/>
+        <constructor-arg ref="toolBox"/>
+        <constructor-arg ref="claritySample"/>
+    </bean>
+    <bean id="manualUpload" class="org.petermac.clarity.tools.ManualUpload">
+        <constructor-arg ref="apiModel"/>
+        <constructor-arg ref="glsRestApiUtils"/>
+        <constructor-arg ref="toolBox"/>
+        <constructor-arg ref="processes"/>
+    </bean>
+    <bean id="clarityWorkflow" class="org.petermac.clarity.clarityApi.ClarityWorkflow">
+        <constructor-arg ref="clarityCredentials"/>
+        <constructor-arg ref="glsRestApiUtils"/>
+    </bean>
+    <bean id="qcManager" class="org.petermac.clarity.tools.QcManager">
+        <constructor-arg ref="toolBox"/>
+    </bean>
+    <bean id="hL7Manager" class="org.petermac.clarity.entities.HL7Manager">
+        <constructor-arg ref="claritySample"/>
+    </bean>
+    <bean id="plateSetupView" class="org.petermac.clarity.plateSetupView.PlateSetupView">
+        <constructor-arg ref="toolBox"/>
+        <constructor-arg ref="apiModel"/>
+        <constructor-arg ref="fileManagement"/>
+
+    </bean>
+
+
+
+    <bean id="wellPlate96" class="org.petermac.clarity.entities.WellPlate96" />
+    <bean id="glsRestApiUtils" class="org.petermac.clarity.clarityApi.GlsRestApiUtils" />
+    <bean id="clarityCredentials" class="org.petermac.util.Clarity" />
+    <bean id="generateBarcode" class="org.petermac.clarity.tools.GenerateBarcode" />
+    <bean id="normalisation" class="org.petermac.clarity.tools.Calculation.Normalisation" />
+    <bean id="dnaQuality" class="org.petermac.clarity.entities.DnaQuality" />
+    <bean id="plateWellSort" class="org.petermac.clarity.tools.PlateWellSort" />
+    <bean id="percentageBaseCalls" class="org.petermac.bioinformatics.PercentageBaseCalls" />
+    <bean id="calculateNMOLEngine" class="org.petermac.clarity.tools.Calculation.CalculateNMOLEngine" />
+
+
+
+</beans>
+
+
+
+
